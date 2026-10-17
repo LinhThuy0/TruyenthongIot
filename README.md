@@ -81,9 +81,16 @@ II.NGUYÊN LÝ HOẠT ĐỘNG
 5. Sau khi tìm thấy thì kết nối, sau đó sử dụng các câu lệnh điều khiển LED: A: Đỏ, B:
 Xanh, C: Vàng, D:Cam, E:Hồng.
 
--VIDEO THỰC HAN HÀNH: [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_nRF/THBLE_VIDEO.mp4](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_nRF/THBLE_VIDEO.mp4).
+-VIDEO THỰC HÀNH: [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_nRF/THBLE_VIDEO.mp4](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_nRF/THBLE_VIDEO.mp4).
 
+2.4. Thực hành Bluetooth với DHT11
 
+-CÁCH THỰC HÀNH:
+1. Chuẩn bị các linh kiện trên Proteus- Arduino,  HC_05, DHT11, 1 Virtual Terminal [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11IMG2.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11IMG2.png).
+2. Mở phần mềm Arduino IDE và tạo hai file mới viết code sau đó xuất file .hex .
+3. Nạp file .hex vào Arduino trên Proteus rồi chạy chương trình [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11IMG1.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11IMG1.png) .
+
+-Kết quả:[https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11VIDEO.mp4](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11VIDEO.mp4) . 
 4. SƠ ĐỒ NGUYÊN LÝ HOẠT ĐỘNG
 
 Điện thoại mở ứng dụng nRF Connect.
