@@ -12,6 +12,7 @@ Nội dung:
 I. GIỚI THIỆU BÀI THỰC HÀNH
 
   Bài thực hành số 5 tìm hiểu cách sử dụng Bluetooth trong hệ thống IoT. Thông qua các bài tập làm quen với việc cấu hình module Bluetooth, trao đổi dữ liệu nối tiếp UART, điều khiển thiết bị từ xa và truyền dữ liệu cảm biến lên giao diện Web.
+  
   Bluetooth là công nghệ truyền thông không dây tầm gần. Trong các hệ thống IoT, Bluetooth có thể được dùng để kết nối vi điều khiển với máy tính hoặc điện thoại, gửi lệnh điều khiển và nhận dữ liệu cảm biến. HC-05/HC-06 thường giao tiếp với vi điều khiển qua UART bằng hai đường TX và RX. BLE là phiên bản Bluetooth Low Energy, được thiết kế để giảm năng lượng tiêu thụ cho các thiết bị phù hợp.
 
 1.1. Mục tiêu học tập
@@ -35,7 +36,19 @@ I. GIỚI THIỆU BÀI THỰC HÀNH
 + Virtual Terminal trong Proteus	Nhập và quan sát dữ liệu nối tiếp.
 
 II.NGUYÊN LÝ HOẠT ĐỘNG
+
 2.1 Thực hành Bluetooth với tập lệnh AT
+
+- CÁCH THỰC HIỆN.
+
+1. Chuẩn bị Arduino, module HC-05 và dây nối theo sơ đồ của bộ phần cứng đang sử dụng.
+ [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_IMG1%20.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_IMG1%20.png).
+2.  Mở Arduino IDE và tải các thư viện Adafruit_NeoPixel hỗ trợ .
+3. Tải Virtual Serial Port Driver để hỗ trợ cổng COM ảo. [https://download.com.vn/download/virtual-serial-port-driver-44945?linkid=1#google_vignette](https://download.com.vn/download/virtual-serial-port-driver-44945?linkid=1#google_vignette).
+5. Mở Arduino IDE và Serial Monitor.
+6. Chọn đúng cổng COM và tốc độ baud phù hợp với chế độ AT của module.
+7. Gửi lệnh AT. Nếu kết nối và chế độ AT đúng, module sẽ trả lời OK.
+8. Thử lần lượt các lệnh cần thiết, ví dụ đặt tên bằng AT+NAME=MyHC-05, sau đó đọc lại hoặc quét Bluetooth để kiểm tra tên.
 
 
 3. YÊU CẦU HOẠT ĐỘNG
