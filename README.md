@@ -41,55 +41,58 @@ II.NGUYÊN LÝ HOẠT ĐỘNG
 
 - CÁCH THỰC HIỆN.
 
-1. Chuẩn bị Arduino, module HC-05 và dây nối theo sơ đồ của bộ phần cứng đang sử dụng.
+1. Mở Proteus chuẩn bị linh kiện Arduino,Virtual Terminal, module HC-05 và dây nối theo sơ đồ .
  [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_IMG1%20.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_IMG1%20.png).
 2.  Mở Arduino IDE và tải các thư viện Adafruit_NeoPixel hỗ trợ .
-3. Tải Virtual Serial Port Driver để hỗ trợ cổng COM ảo. [https://download.com.vn/download/virtual-serial-port-driver-44945?linkid=1#google_vignette](https://download.com.vn/download/virtual-serial-port-driver-44945?linkid=1#google_vignette).
-5. Mở Arduino IDE và Serial Monitor.
-6. Chọn đúng cổng COM và tốc độ baud phù hợp với chế độ AT của module.
-7. Gửi lệnh AT. Nếu kết nối và chế độ AT đúng, module sẽ trả lời OK.
-8. Thử lần lượt các lệnh cần thiết, ví dụ đặt tên bằng AT+NAME=MyHC-05, sau đó đọc lại hoặc quét Bluetooth để kiểm tra tên.
+3. Tải Virtual Serial Port Driver để hỗ trợ cổng COM ảo[https://download.com.vn/download/virtual-serial-port-driver-44945?linkid=1#google_vignette](https://download.com.vn/download/virtual-serial-port-driver-44945?linkid=1#google_vignette).
+4. Kết nối cổng COM ảo>
+  <img width="407" height="280" alt="image" src="https://github.com/user-attachments/assets/b2f20208-d115-4976-93fd-6264de1c791b" />
 
+5. Viết code sử dụng các lênh AT trên Arduino IDE rồi xuất file .hex  [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_AT/THBLE_AT.ino](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_AT/THBLE_AT.ino) .
+6 . Vào Proteus nạp file .hex vào Arduino sau đó chạy chương trình.
+8.  Hiển thị cửa sổ Ternimal sau đó nhập các lệnh AT vào  [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_IMG2.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_IMG2.png) .
 
-3. YÊU CẦU HOẠT ĐỘNG
+-Kết quả: Lệnh kiểm tra cơ bản trả về phản hồi hợp lệ.Các tham số thay đổi được phản ánh đúng theo phản hồi hoặc khi quét thiết bị.
+-Chú ý: Nếu không có phản hồi, kiểm tra chế độ AT, dây TX/RX, nguồn cấp, cổng COM và baud rate.
 
-Ký tự lệnh gửi
+-VIDEO THƯỢC HÀNH:[https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_AT_VIDEOKQ.mp4](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_AT_VIDEOKQ.mp4)
 
-Màu LED
+2.2 Thực hành Bluetooth giao tiếp giữa hai HC_05
 
-Giá trị RGB
+1. Chuẩn bị các linh kiện trên Proteus- 2 Arduino, 2 HC_05, 2LED, 2 RES300, 1 Virtual Terminal[https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_IMG1.png]([https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11IMG2.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_IMG1.png).
+2. Điều chỉnh cổng ảo.Tại HC_05 số 1 chỉnh cổng ảo về COM1
+<img width="717" height="394" alt="image" src="https://github.com/user-attachments/assets/5ba10bca-730e-4d08-8e32-031118ea1904" />
+3. Mở phần mềm Arduino IDE và tạo hai file mới viết code tương ứng với GUILENH [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_HC05GUILENH/THBLE_HC05GUILENH.ino](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_HC05GUILENH/THBLE_HC05GUILENH.ino) và NHANLENH [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_HC05NHANLENH/THBLE_HC05NHANLENH.ino](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_HC05NHANLENH/THBLE_HC05NHANLENH.ino)
+4. Tại Proteus bấm <img width="20" height="15" alt="image" src="https://github.com/user-attachments/assets/00a21102-ce3c-4dbe-b81a-f76b74b237d6" /> để chạy chương trình.
+5. Sau khi chạy sẽ hiển thị cửa sổ Terminal. Sử dụng các câu lệnh để điều khiển như: A:Cảnh báo ,B: Hoạt động bình thương, E: Tắt cả hai LED [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_IMG2.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_IMG2.png).
 
-A hoặc a
+-Kết quả: Dữ liệu nhập từ một đầu được truyền qua mô hình Serial và xuất hiện ở đầu nhận tương ứng
 
-Đỏ
+-VIDEO THỰC HÀNH: [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_VIDEO.mp4](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_VIDEO.mp4).
 
-R = 255, G = 0, B = 0
-
-B hoặc b
-
-Xanh lá
-
-R = 0, G = 255, B = 0
-
-C hoặc c
-
-Vàng
-
-R = 255, G = 255, B = 0
-
-D hoặc d
-
-Cam
-
-R = 255, G = 80, B = 0
-
-E hoặc e
-
-Hồng
-
-R = 255, G = 0, B = 100
-
-Cơ chế hoạt động: Khi điện thoại ghi một chuỗi ký tự vào Characteristic của ESP32-S3, callback onWrite được gọi. Chương trình đọc ký tự đầu tiên, xác định lệnh và cập nhật màu LED.
+Bước 2 – Tạo cặp cổng COM ảo
+1. Cài phần mềm Virtual Serial Port Driver tương thích với hệ điều hành.
+2. Mở phần mềm và tạo một cặp COM ảo, ví dụ COM1 và COM2.
+3. Kiểm tra cặp COM đã được tạo thành công.
+4. Không chọn trùng cổng COM đang được phần mềm khác sử dụng.
+Bước 3 – Tạo mạch trong Proteus
+1. Tạo một dự án mô phỏng mới.
+2. Thêm hai module Bluetooth HC-05 và HC-06 từ thư viện.
+3. Thêm hai Virtual Terminal để quan sát và nhập dữ liệu.
+4. Kết nối TX/RX theo hướng truyền nhận chéo: TX của thiết bị nối đến RX của đầu nhận, RX nối đến TX của đầu truyền.
+5. Thực hiện kết nối theo mô hình và thuộc tính linh kiện mà thư viện mô phỏng hỗ trợ.
+Bước 4 – Cấu hình thuộc tính
+1. Mở thuộc tính HC-05 và gán cổng COM ảo thứ nhất, ví dụ COM1.
+2. Mở thuộc tính HC-06 và gán cổng COM ảo thứ hai, ví dụ COM2.
+3. Đặt các thông số Serial giống nhau ở hai đầu. Tài liệu sử dụng ví dụ 9600 baud, 8 data bits, parity None, 1 stop bit.
+4. Kiểm tra cặp COM ảo đã liên kết với nhau.
+Bước 5 – Chạy mô phỏng
+1. Nhấn Play trong Proteus.
+2. Mở hai cửa sổ Virtual Terminal.
+3. Nhập một chuỗi thử nghiệm ở Terminal thứ nhất, ví dụ 12345678.
+4. Quan sát xem dữ liệu có xuất hiện ở đầu còn lại hay không.
+5. Thử gửi dữ liệu theo chiều ngược lại.
+6. Nếu dữ liệu không truyền được, kiểm tra COM, baud rate, nối chéo TX/RX và cấu hình thuộc tính module.
 
 4. SƠ ĐỒ NGUYÊN LÝ HOẠT ĐỘNG
 
