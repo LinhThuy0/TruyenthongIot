@@ -3,63 +3,40 @@
 
 Chủ đề: Truyền thông IoT
 Nội dung:
-1. Thực hành Bluetooth với tập lệnh AT [https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_AT](https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_AT)
-Thiết bị: ESP32-S3 và LED RGB NeoPixel tích hợp
-
-Ứng dụng điều khiển: nRF Connect for Mobile
-
-TÀI LIỆU HƯỚNG DẪN THỰC HÀNH
+1. Thực hành Bluetooth với tập lệnh AT [https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_AT](https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_AT).
+2. Thực hành Bluetooth giao tiếp giữa hai HC_05 [https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_GIAOTIEP](https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_GIAOTIEP).
+3.  Thực hành điều khiển LED thông qua ứng dụng nRF Connect [https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_nRF](https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_nRF).
+4.   Thực hành Bluetooth với DHT11  [https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_DHT11](https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_DHT11).
 
 
-1. GIỚI THIỆU BÀI THỰC HÀNH
+I. GIỚI THIỆU BÀI THỰC HÀNH
 
-Bài thực hành xây dựng một hệ thống truyền thông không dây tầm ngắn trong các ứng dụng IoT. Điện thoại thông minh kết nối trực tiếp với ESP32-S3 thông qua giao thức Bluetooth Low Energy (BLE).
-
-Người dùng sử dụng ứng dụng nRF Connect trên điện thoại để truyền các ký tự lệnh tới thiết bị BLE. Vi điều khiển ESP32-S3 nhận dữ liệu, phân tích lệnh và thay đổi màu sắc của đèn LED RGB NeoPixel tích hợp trên bo mạch, sử dụng chân dữ liệu GPIO 48.
+  Bài thực hành số 5 tìm hiểu cách sử dụng Bluetooth trong hệ thống IoT. Thông qua các bài tập làm quen với việc cấu hình module Bluetooth, trao đổi dữ liệu nối tiếp UART, điều khiển thiết bị từ xa và truyền dữ liệu cảm biến lên giao diện Web.
+  Bluetooth là công nghệ truyền thông không dây tầm gần. Trong các hệ thống IoT, Bluetooth có thể được dùng để kết nối vi điều khiển với máy tính hoặc điện thoại, gửi lệnh điều khiển và nhận dữ liệu cảm biến. HC-05/HC-06 thường giao tiếp với vi điều khiển qua UART bằng hai đường TX và RX. BLE là phiên bản Bluetooth Low Energy, được thiết kế để giảm năng lượng tiêu thụ cho các thiết bị phù hợp.
 
 1.1. Mục tiêu học tập
++ Tìm hiểu nguyên lý hoạt động và kiến trúc truyền thông Bluetooth trong IoT.
++ Tìm hiểu quy trình ghép nối, kết nối và trao đổi dữ liệu giữa module Bluetooth với thiết bị điều khiển.
++ Biết cách sử dụng lệnh AT Command để cấu hình module HC-05 như tên thiết bị, mật khẩu, tốc độ baud và vai trò master/slave.
++ Biết mô phỏng giao tiếp Bluetooth HC-05/HC-06 trong Proteus thông qua cổng COM ảo và Virtual Terminal.
++ Biết sử dụng ứng dụng nRF Connect để gửi lệnh bật/tắt LED.
++ Biết mô hình truyền dữ liệu cảm biến DHT11 qua UART để hiển thị dữ liệu theo thời gian thực.
 
-Hiểu nguyên lý hoạt động và kiến trúc truyền thông Bluetooth Low Energy (BLE) trong hệ thống IoT.
+1.2. THIẾT BỊ VÀ PHẦN MỀM CẦN CHUẨN BỊ
 
-Biết khởi tạo BLE trên ESP32-S3 bằng các thư viện BLEDevice, BLEServer, BLEUtils và BLEAdvertising.
++ Kit vi điều khiển ESP32-S3 : Phát sóng BLE và xử lý lệnh điều khiển.
++ LED RGB NeoPixel tích hợp (GPIO 48): Hiển thị màu sắc tương ứng với lệnh nhận được.
++ Cáp USB: Nạp chương trình từ máy tính và cấp nguồn cho ESP32-S3.
++ Điện thoại thông minh Android/iOS: Chạy ứng dụng nRF Connect để kết nối và gửi lệnh.
++ Arduino IDE: Biên dịch và nạp mã nguồn cho ESP32-S3.
++ Thư viện Adafruit_NeoPixel: Điều khiển LED RGB NeoPixel.
++ Proteus 8 Professional:	Thiết kế mạch và mô phỏng giao tiếp.
++ Virtual Serial Port Driver	Tạo cặp cổng COM ảo để trao đổi dữ liệu.
++ Virtual Terminal trong Proteus	Nhập và quan sát dữ liệu nối tiếp.
 
-Biết tạo Service UUID và Characteristic UUID để trao đổi dữ liệu.
+II.NGUYÊN LÝ HOẠT ĐỘNG
+2.1 Thực hành Bluetooth với tập lệnh AT
 
-Biết sử dụng nRF Connect để quét, kết nối, ghi dữ liệu và kiểm tra phản hồi từ thiết bị BLE.
-
-Hiểu cách sử dụng callback onWrite để nhận lệnh và điều khiển LED RGB NeoPixel.
-
-2. THIẾT BỊ VÀ PHẦN MỀM CẦN CHUẨN BỊ
-
-Thành phần
-
-Vai trò
-
-Kit vi điều khiển ESP32-S3 (ví dụ ESP32-S3-USB-OTG)
-
-Phát sóng BLE và xử lý lệnh điều khiển.
-
-LED RGB NeoPixel tích hợp (GPIO 48)
-
-Hiển thị màu sắc tương ứng với lệnh nhận được.
-
-Cáp USB
-
-Nạp chương trình từ máy tính và cấp nguồn cho ESP32-S3.
-
-Điện thoại thông minh Android/iOS
-
-Chạy ứng dụng nRF Connect để kết nối và gửi lệnh.
-
-Arduino IDE
-
-Biên dịch và nạp mã nguồn cho ESP32-S3.
-
-Thư viện Adafruit_NeoPixel
-
-Điều khiển LED RGB NeoPixel.
-
-Điều kiện trước khi bắt đầu: Máy tính đã cài Arduino IDE và gói board ESP32 phù hợp; thư viện Adafruit_NeoPixel đã được cài đặt; điện thoại đã cài ứng dụng nRF Connect for Mobile.
 
 3. YÊU CẦU HOẠT ĐỘNG
 
