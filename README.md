@@ -2,6 +2,7 @@
 
 
 Chủ đề: Truyền thông IoT
+
 Nội dung:
 1. Thực hành Bluetooth với tập lệnh AT [https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_AT](https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_AT).
 2. Thực hành Bluetooth giao tiếp giữa hai HC_05 [https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_GIAOTIEP](https://github.com/LinhThuy0/TruyenthongIot/tree/main/BLE/THBLE_GIAOTIEP).
@@ -55,11 +56,11 @@ II.NGUYÊN LÝ HOẠT ĐỘNG
 -Kết quả: Lệnh kiểm tra cơ bản trả về phản hồi hợp lệ.Các tham số thay đổi được phản ánh đúng theo phản hồi hoặc khi quét thiết bị.
 -Chú ý: Nếu không có phản hồi, kiểm tra chế độ AT, dây TX/RX, nguồn cấp, cổng COM và baud rate.
 
--VIDEO THƯỢC HÀNH:[https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_AT_VIDEOKQ.mp4](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_AT_VIDEOKQ.mp4)
+-VIDEO THỰC HÀNH:[https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_AT_VIDEOKQ.mp4](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_AT/THBLE_AT_VIDEOKQ.mp4)
 
 2.2 Thực hành Bluetooth giao tiếp giữa hai HC_05
 
-1. Chuẩn bị các linh kiện trên Proteus- 2 Arduino, 2 HC_05, 2LED, 2 RES300, 1 Virtual Terminal[https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_IMG1.png]([https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11IMG2.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_IMG1.png).
+1. Chuẩn bị các linh kiện trên Proteus- 2 Arduino, 2 HC_05, 2LED, 2 RES300, 1 Virtual Terminal[https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_IMG1.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_IMG1.png).
 2. Điều chỉnh cổng ảo.Tại HC_05 số 1 chỉnh cổng ảo về COM1
 <img width="717" height="394" alt="image" src="https://github.com/user-attachments/assets/5ba10bca-730e-4d08-8e32-031118ea1904" />
 3. Mở phần mềm Arduino IDE và tạo hai file mới viết code tương ứng với GUILENH [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_HC05GUILENH/THBLE_HC05GUILENH.ino](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_HC05GUILENH/THBLE_HC05GUILENH.ino) và NHANLENH [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_HC05NHANLENH/THBLE_HC05NHANLENH.ino](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_GIAOTIEP/THBLE_HC05NHANLENH/THBLE_HC05NHANLENH.ino)
