@@ -97,13 +97,24 @@ III. SƠ ĐỒ NGUYÊN LÝ HOẠT ĐỘNG
 -Nguyên lý hoạt động bài thực hành BLE với lệnh AT.
 <img width="353" height="358" alt="image" src="https://github.com/user-attachments/assets/edbbef68-4308-44fc-b495-5d704215371c" />
 
+
+
+
                                             
 -Nguyên lý hoạt động thực hành Bluetooth giao tiếp giữa hai HC_05.
 <img width="290" height="296" alt="image" src="https://github.com/user-attachments/assets/4a7d1f15-543b-4b98-869a-fef382d7c973" />
 
 
+
+
+
 -Nguyên lý hoạt động thực hành điều khiển LED thông qua ứng dụng nRF Connect.
 <img width="320" height="254" alt="image" src="https://github.com/user-attachments/assets/b702d986-252a-42ff-b46a-249902a3f3b7" />
+
+
+
+
+
 
 -Nguyên lý hoạt động thực hành Bluetooth với DHT11.
 <img width="275" height="239" alt="image" src="https://github.com/user-attachments/assets/b3656330-c390-42cf-9eb7-ac7915be9a99" />
