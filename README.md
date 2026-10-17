@@ -91,274 +91,39 @@ Xanh, C: Vàng, D:Cam, E:Hồng.
 3. Nạp file .hex vào Arduino trên Proteus rồi chạy chương trình [https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11IMG1.png](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11IMG1.png) .
 
 -Kết quả:[https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11VIDEO.mp4](https://github.com/LinhThuy0/TruyenthongIot/blob/main/BLE/THBLE_DHT11/THBLE_DHT11VIDEO.mp4) . 
-4. SƠ ĐỒ NGUYÊN LÝ HOẠT ĐỘNG
 
-Điện thoại mở ứng dụng nRF Connect.
+III. SƠ ĐỒ NGUYÊN LÝ HOẠT ĐỘNG
 
-Quét và kết nối với thiết bị BLE có tên LINH_BLE.
+-Nguyên lý hoạt động bài thực hành BLE với lệnh AT.
+<img width="353" height="358" alt="image" src="https://github.com/user-attachments/assets/edbbef68-4308-44fc-b495-5d704215371c" />
 
-Điện thoại ghi ký tự A, B, C, D hoặc E vào Characteristic.
+                                            
+-Nguyên lý hoạt động thực hành Bluetooth giao tiếp giữa hai HC_05.
+<img width="290" height="296" alt="image" src="https://github.com/user-attachments/assets/4a7d1f15-543b-4b98-869a-fef382d7c973" />
 
-ESP32-S3 nhận dữ liệu trong callback onWrite.
 
-Chương trình phân tích ký tự lệnh và chọn màu tương ứng.
+-Nguyên lý hoạt động thực hành điều khiển LED thông qua ứng dụng nRF Connect.
+<img width="320" height="254" alt="image" src="https://github.com/user-attachments/assets/b702d986-252a-42ff-b46a-249902a3f3b7" />
 
-Thư viện NeoPixel cập nhật LED RGB tích hợp.
+-Nguyên lý hoạt động thực hành Bluetooth với DHT11.
+<img width="275" height="239" alt="image" src="https://github.com/user-attachments/assets/b3656330-c390-42cf-9eb7-ac7915be9a99" />
 
-Giải thích: Điện thoại đóng vai trò BLE Client, gửi lệnh đến ESP32-S3. ESP32-S3 đóng vai trò BLE Server, quảng bá dịch vụ, nhận dữ liệu ghi vào Characteristic và điều khiển LED.
+IV.LỖI THƯỜNG GẶP VÀ CÁCH KHẮC PHỤC
 
-5. CÁC THÔNG SỐ CẤU HÌNH BLE
+<img width="377" height="376" alt="image" src="https://github.com/user-attachments/assets/496f6a27-b9cc-4912-8a1a-5efc0f9f812b" />
 
-Thông số
 
-Giá trị
 
-Ý nghĩa
 
-Tên Bluetooth
+V. KẾT LUẬN
 
-LINH_BLE
+Qua bài thực hành số 5,em đã làm quen với truyền thông Bluetooth trong IoT qua bốn nội dung: cấu hình HC-05 bằng AT Command, mô phỏng truyền nhận dữ liệu Serial trong Proteus, điều khiển LED bằng giao diện Web và xây dựng luồng dữ liệu cảm biến DHT11 lên Web.
+Kiến thức quan trọng cần nắm là sự khác nhau giữa Bluetooth và UART, cách nối chéo TX/RX, vai trò của baud rate, cách kiểm tra dữ liệu ở từng bước và vai trò của backend Node.js/WebSocket trong ứng dụng Web. Khi thực hiện, cần kiểm tra lần lượt từ phần cứng hoặc mô phỏng, cổng COM, dữ liệu Serial đến giao diện để xác định đúng vị trí phát sinh lỗi.
 
-Tên hiển thị khi quét trên điện thoại.
-
-Chân LED
-
-GPIO 48
-
-Chân dữ liệu LED NeoPixel tích hợp trên bo mạch được sử dụng trong bài.
-
-Service UUID
-
-12345678-1234-1234-1234-1234567890ab
-
-Mã định danh dịch vụ BLE tùy chỉnh.
-
-Characteristic UUID
-
-12345678-1234-1234-1234-1234567890ac
-
-Mã định danh đặc trưng nhận lệnh ghi.
-
-Characteristic cần được cấu hình thuộc tính Write và/hoặc Write Without Response phù hợp với cách ghi được ứng dụng nRF Connect sử dụng.
-
-6. HƯỚNG DẪN THỰC HIỆN TỪNG BƯỚC
-
-6.1. Nạp chương trình vào ESP32-S3
-
-Mở Arduino IDE.
-
-Vào Tools → Manage Libraries..., tìm Adafruit NeoPixel và nhấn Install nếu thư viện chưa được cài.
-
-Kết nối ESP32-S3 với máy tính bằng cáp USB có hỗ trợ truyền dữ liệu.
-
-Trong Tools → Board, chọn đúng loại bo mạch ESP32-S3 đang sử dụng. Chọn đúng cổng COM trong Tools → Port.
-
-Mở tệp mã nguồn BTH_BLE_nRF.ino.
-
-Nhấn Upload để biên dịch và nạp chương trình. Nếu không nạp được, kiểm tra cáp USB, cổng COM, board và chế độ BOOT theo hướng dẫn của bo mạch.
-
-Mở Serial Monitor, đặt baud rate 115200 để theo dõi thông báo khởi động và trạng thái BLE.
-
-6.2. Kết nối và điều khiển bằng nRF Connect
-
-Bật Bluetooth trên điện thoại và mở ứng dụng nRF Connect for Mobile.
-
-Trong tab Scanner, tìm thiết bị có tên LINH_BLE. Nhấn Connect.
-
-Sau khi kết nối, mở rộng danh sách dịch vụ và tìm Service UUID kết thúc bằng 90ab.
-
-Tìm Characteristic UUID kết thúc bằng 90ac, kiểm tra đặc tính có hỗ trợ Write hoặc Write Without Response.
-
-Nhấn biểu tượng ghi dữ liệu (Write). Chọn định dạng UTF-8 hoặc Text nếu phiên bản ứng dụng hiển thị tùy chọn này.
-
-Nhập một ký tự lệnh: A, B, C, D hoặc E. Nhấn Write để gửi.
-
-Quan sát LED RGB và Serial Monitor. Lặp lại với các lệnh còn lại để kiểm tra đủ năm màu.
-
-7. BẢNG KIỂM TRA KẾT QUẢ
-
-Lần thử
-
-Ký tự gửi
-
-Màu LED mong đợi
-
-Thông báo Serial Monitor mẫu
-
-1
-
-A hoặc a
-
-Đỏ
-
-Nhan lenh: A / LED mau DO
-
-2
-
-B hoặc b
-
-Xanh lá
-
-Nhan lenh: B / LED mau XANH LA
-
-3
-
-C hoặc c
-
-Vàng
-
-Nhan lenh: C / LED mau VANG
-
-4
-
-D hoặc d
-
-Cam
-
-Nhan lenh: D / LED mau CAM
-
-5
-
-E hoặc e
-
-Hồng
-
-Nhan lenh: E / LED mau HONG
-
-Kết quả kỳ vọng: Mỗi khi gửi một ký tự hợp lệ từ điện thoại, LED thay đổi sang màu tương ứng mà không làm mất kết nối BLE. Nội dung Serial Monitor phụ thuộc cách viết thông báo trong chương trình.
-
-8. GIẢI THÍCH CÁC LỆNH VÀ HÀM QUAN TRỌNG
-
-Đoạn mã / Hàm
-
-Ý nghĩa
-
-#define LED_PIN 48
-
-Khai báo chân dữ liệu điều khiển LED NeoPixel.
-
-BLEDevice::init("LINH_BLE")
-
-Khởi tạo BLE và đặt tên thiết bị.
-
-server->createService(SERVICE_UUID)
-
-Tạo dịch vụ BLE với UUID đã khai báo.
-
-PROPERTY_WRITE | PROPERTY_WRITE_NR
-
-Cho phép Client ghi dữ liệu theo các phương thức tương ứng; tên hằng cụ thể phụ thuộc thư viện BLE được dùng.
-
-BLECharacteristicCallbacks
-
-Lớp callback xử lý sự kiện của Characteristic.
-
-onWrite(...)
-
-Được gọi khi Client ghi dữ liệu vào Characteristic.
-
-pCharacteristic->getValue()
-
-Lấy dữ liệu nhận được dưới dạng chuỗi/byte.
-
-value[0]
-
-Đọc ký tự đầu tiên làm lệnh điều khiển; cần kiểm tra dữ liệu không rỗng trước khi đọc.
-
-led.setPixelColor(...) và led.show()
-
-Thiết lập màu RGB và cập nhật màu ra LED.
-
-9. VIDEO VÀ TỆP THỰC HÀNH
-
-Các tệp có thể đi kèm tài liệu:
-
-THBLE_IMG1.jpg: Giao diện ghi giá trị (Write Value) trong nRF Connect.
-
-THBLE_IMG2.jpg: Trạng thái nạp chương trình trên Arduino IDE và LED trên ESP32-S3.
-
-THBLE_VIDEO.mp4: Video minh họa quá trình quét, kết nối và điều khiển LED.
-
-BTH_BLE_nRF.ino: Mã nguồn Arduino cho bài thực hành BLE.
-
-README.md: Tài liệu hướng dẫn sử dụng.
-
-Lưu ý: Các tệp được liệt kê ở trên là tài liệu dự kiến đi kèm; nội dung Word này không tự chứa các ảnh/video nếu người dùng chưa cung cấp các tệp đó.
-
-10. CÁC LỖI THƯỜNG GẶP VÀ CÁCH KHẮC PHỤC
-
-Hiện tượng
-
-Nguyên nhân cần kiểm tra
-
-Cách xử lý
-
-Không tìm thấy LINH_BLE
-
-ESP32-S3 chưa chạy chương trình, chưa cấp nguồn hoặc chưa quảng bá BLE.
-
-Kiểm tra nạp code, cáp USB, Serial Monitor và bật Bluetooth trên điện thoại.
-
-Kết nối được nhưng không thấy Service
-
-UUID không khớp hoặc dịch vụ chưa được thêm/khởi động.
-
-Đối chiếu SERVICE_UUID, lệnh start() và cấu hình advertising.
-
-Không tìm thấy Characteristic
-
-CHAR_UUID sai hoặc Characteristic chưa được thêm vào Service.
-
-Kiểm tra UUID kết thúc bằng 90ac và cấu hình service.
-
-Gửi lệnh nhưng LED không đổi màu
-
-Sai kiểu dữ liệu, ký tự không hợp lệ, hoặc callback không xử lý dữ liệu.
-
-Gửi một ký tự A–E dưới dạng UTF-8/Text; xem Serial Monitor.
-
-Lỗi Adafruit_NeoPixel
-
-Chưa cài thư viện hoặc tên thư viện chưa đúng.
-
-Mở Library Manager và cài Adafruit NeoPixel.
-
-LED không sáng dù đã nhận lệnh
-
-Bo mạch dùng loại LED/chân khác, cấu hình thứ tự màu hoặc mức sáng không phù hợp.
-
-Xác minh model bo mạch, GPIO LED tích hợp, kiểu GRB/RGB và nguồn cấp.
-
-11. CÂU HỎI VÀ ĐÁP ÁN VẤN ĐÁP
-
-Câu 1. Tại sao đây là bài truyền thông Bluetooth Low Energy (BLE)?
-
-Trả lời: Vì ESP32-S3 và điện thoại trao đổi dữ liệu không dây bằng BLE, phù hợp với kết nối tầm ngắn và các lần truyền dữ liệu nhỏ trong hệ thống IoT.
-
-Câu 2. Điện thoại làm gì trong hệ thống?
-
-Trả lời: Điện thoại chạy nRF Connect, quét thiết bị, kết nối BLE và ghi ký tự lệnh vào Characteristic.
-
-Câu 3. ESP32-S3 làm gì?
-
-Trả lời: ESP32-S3 hoạt động như BLE Server, quảng bá dịch vụ, nhận lệnh và điều khiển LED NeoPixel.
-
-Câu 4. Hàm onWrite hoạt động như thế nào?
-
-Trả lời: Callback onWrite được gọi khi Client ghi dữ liệu vào Characteristic. Chương trình đọc dữ liệu và xử lý lệnh trong callback.
-
-Câu 5. Vì sao đọc value[0] thay vì toàn bộ chuỗi?
-
-Trả lời: Vì quy ước lệnh chỉ gồm một ký tự A, B, C, D hoặc E. Cần kiểm tra chuỗi không rỗng trước khi đọc phần tử đầu tiên.
-
-Câu 6. Có cảm biến nào khác trong bài không?
-
-Trả lời: Không. Bài tập tập trung vào giao tiếp BLE và điều khiển LED RGB NeoPixel tích hợp trên bo mạch.
-
-12. KẾT LUẬN
-
-Qua bài thực hành, người học làm quen với cách thiết lập giao tiếp Bluetooth Low Energy giữa ESP32-S3 và điện thoại thông minh thông qua nRF Connect. Nội dung trọng tâm là khởi tạo BLE Server, tạo Service và Characteristic, xử lý dữ liệu ghi bằng callback onWrite, sau đó điều khiển LED RGB NeoPixel theo lệnh nhận được.
-
-Bài thực hành giúp củng cố kiến thức về truyền thông không dây tầm ngắn trong IoT, đồng thời rèn luyện kỹ năng cấu hình môi trường Arduino IDE, kiểm tra lỗi và đánh giá kết quả thực nghiệm.
+ VI.Tài LIỆU THAM KHẢO.
+- BTH5_BLUETOOTH.pdf – Bài tập thực hành Truyền thông trong IoT, Bài thực hành số 5: Bluetooth & BLE.
+- Arduino:[https://www.arduino.cc/](https://www.arduino.cc/) . 
+- GitLab – Bluetooth assignments:[https://gitlab.com/iot-communication-assignment/course-2526/bluetooth-assignments.git](https://gitlab.com/iot-communication-assignment/course-2526/bluetooth-assignments.git) .
+-nRF Connect for Mobile:[ https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Mobile]( https://www.nordicsemi.com/Products/Development-tools/nRF-Connect-for-Mobile).
 
 
