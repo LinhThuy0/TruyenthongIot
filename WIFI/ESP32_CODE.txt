@@ -1,0 +1,80 @@
+esphome:
+  name: lynh
+  friendly_name: lynh
+
+esp32:
+  variant: esp32s3
+  flash_size: 8MB
+  framework:
+    type: esp-idf
+
+# Ghi log qua cổng USB Serial/JTAG
+logger:
+  hardware_uart: USB_SERIAL_JTAG
+
+# Kết nối Home Assistant
+api:
+  encryption:
+    key: "DWmlodEOqc8XAMIR2LzocPyazTLD3c9V3pepXhnTV/Q="
+
+# Cập nhật chương trình qua Wi-Fi
+ota:
+  - platform: esphome
+
+# Wi-Fi chính và điểm phát dự phòng
+wifi:
+  ssid: "H2SO4+NH3=Pass"
+  password: "DuyenLinh"
+
+  ap:
+    ssid: "H2SO4+NH3=Pass"
+    password: "DuyenLinh"
+
+# Trang cấu hình khi không kết nối được Wi-Fi
+captive_portal:
+
+# Giao diện điều khiển trên trình duyệt
+web_server:
+  port: 80
+
+# Đèn LED RGB tích hợp trên ESP32-S3
+light:
+  - platform: esp32_rmt_led_strip
+    id: onboard_rgb
+    name: "lynh RGB"
+
+    pin: GPIO48
+    num_leds: 1
+    chipset: WS2812
+    rgb_order: GRB
+
+    # Khi khởi động, đèn mặc định tắt
+    restore_mode: ALWAYS_OFF
+
+    # Điều khiển độ sáng và màu RGB
+    default_transition_length: 700ms
+
+    # Các hiệu ứng LED
+    effects:
+      - random:
+          name: "Ngau nhien"
+          transition_length: 1s
+          update_interval: 3s
+
+      - pulse:
+          name: "Tho"
+          transition_length: 1s
+          update_interval: 1s
+
+      - strobe:
+          name: "Nhay"
+          colors:
+            - state: true
+              brightness: 100%
+              red: 100%
+              green: 0%
+              blue: 0%
+              duration: 600ms
+
+            - state: false
+              duration: 600ms
